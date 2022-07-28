@@ -1,8 +1,14 @@
 
 import React from 'react';
 import login_pic from '../assets/login.png';
-import LoginForm from './LoginForm';
+import LoginForm from './LoginForm';  
 const Login = () => {
+
+function goToSignup(){
+  window.location.href='/signup';
+}
+
+
   return (
     <div className='rounded-lg  '>
         <h1 className='ml-16  md:text-5xl m-auto text-center
@@ -24,7 +30,7 @@ const Login = () => {
                 <LoginForm />
                 <div className='mt-2 ml-5'>
                 <span className=' mr-5'>You don't have account....</span>
-                <text className='h-9 ml-3 cursor-pointer text-lg text-black underline '>Sign up</text>
+                <text className='h-9 ml-3 cursor-pointer text-lg text-black underline ' onClick={goToSignup}>Sign up</text>
                 </div>
             </div>    
         </div>
