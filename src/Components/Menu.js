@@ -27,27 +27,24 @@ function goToUserSettings(){
 
 
   return (
-    <div className="h-screen bg-no-repeat  
-    bg-right-bottom bg-left-top
-     bg-cover w-screen 
-    absolute">
+    <div className="h-screen  w-screen absolute">
         
-        <h1 className='text-center text-6xl text-violet-600'>Menu Page</h1>
-        <div className='justify-center items-center relative top-1/4  flex '>
-            <div className='text-center cursor-pointer col-md-6 col-lg-3 col-sm-12' onClick={goToUserSettings}>
-                <img className='h-36 w-42 ' src={user} alt="" />
+        <h1 className='text-center  text-8xl text-violet-600'>Menu Page</h1>
+        <div className='justify-center items-center row relative top-1/4 flex '>
+            <div className=' cursor-pointer justify-center h-36 items-center text-center mb-5   col-lg-4 w-auto ml-3 col-md-6 col-sm-12' onClick={goToUserSettings}>
+                <img className='h-40 w-42' src={user} alt="" />
                 <span className='fw-bold'>User</span>
             </div>
-            <div className='text-center col-md-6 col-lg-3 col-sm-12 cursor-pointer'>
+            <div className='cursor-pointer justify-center items-center text-center mb-5  h-36 col-lg-4 w-auto ml-3 col-md-6 col-sm-12'>
                 <img className='h-36 w-42' src={lab_1} alt="" />
                 <span className='fw-bold'>LAB 01</span>
             </div>
-            <div className='text-center col-md-6 col-lg-3 col-sm-12 cursor-pointer'>
-                <img className='h-36 w-42' src={lab_2} alt="" />
+            <div className=' cursor-pointer h-36 justify-center items-center text-center mb-5   col-lg-4 w-auto ml-3 col-md-6 col-sm-12'>
+                <img className='h-36 w-42 ' src={lab_2} alt="" />
                 <span className='fw-bold'>LAB 02</span>
             </div>
-            <div className='text-center col-md-6 col-lg-3 col-sm-12 cursor-pointer'>
-            <img className='h-36 w-42' src={logout} onClick={handleSignOut} alt="" />
+            <div className=' cursor-pointer h-36 justify-center items-center text-center mb-5  col-lg-4 w-auto ml-3 col-md-6 col-sm-12'>
+                <img className='h-36 w-42' src={logout} onClick={handleSignOut} alt="" />
                 <span className='fw-bold'>Log Out</span>
             </div>
         </div>

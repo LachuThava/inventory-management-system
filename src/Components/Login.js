@@ -13,6 +13,7 @@ function goToSignup(){
     <div className='rounded-lg  '>
         <h1 className='ml-16  md:text-5xl m-auto text-center
           lg:text-6xl'>INVENTORY MANAGEMENT</h1>
+          <h4 className='text-center'>University Of Jaffna</h4>
         <div className=' flex p-4 justify-between mr-3 '>
             <div className='relative hidden lg:inline-grid'>
             <img src={login_pic} alt=""  
