@@ -7,6 +7,8 @@ import Navbar from "./Components/Navbar";
 import Signup from "./Components/Signup";
 import {Routes,Route} from 'react-router-dom';
 import UserSettings from "./Components/UserSettings";
+import Lab from "./Components/Lab";
+import Chat from "./Components/Chat";
 
 
 function App() {
@@ -14,10 +16,12 @@ function App() {
     <div className="">
       <BrowserRouter>
         <Routes>
-          <Route exact path='/' element={<Login/>} />
+          <Route exact path='/' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
           <Route path = '/menu' element={<Menu/>}  />
           <Route path='/Settings' element={<UserSettings />} />
+          <Route path='/Lab' element={<Lab />} />
+          <Route path="/chatting" element={<Chat />} />
           </Routes>
       </BrowserRouter>
     </div>
