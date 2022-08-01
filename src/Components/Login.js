@@ -1,7 +1,12 @@
 
+import { async } from '@firebase/util';
+import { sendPasswordResetEmail } from 'firebase/auth';
 import React from 'react';
 import login_pic from '../assets/login.png';
-import LoginForm from './LoginForm';  
+import { auth } from '../firebase';
+import LoginForm, { goToForgetPassword } from './LoginForm';  
+
+ 
 const Login = () => {
 
 function goToSignup(){
@@ -29,8 +34,10 @@ function goToSignup(){
             />
               </div>
                 <LoginForm />
-                <div className='mt-2 ml-5'>
-                <span className=' mr-5'>You don't have account....</span>
+                <div className='mt-2 ml-5 flex-col'>
+                <text className='h-9 ml-3 cursor-pointer text-lg text-black underline ' onClick={goToForgetPassword}>Forget Password</text>
+                
+                <span className=' mr-5'><br/>You don't have account....</span>
                 <text className='h-9 ml-3 cursor-pointer text-lg text-black underline ' onClick={goToSignup}>Sign up</text>
                 </div>
             </div>    

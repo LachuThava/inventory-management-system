@@ -2,8 +2,20 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { auth } from '../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 
+
+export async function goToForgetPassword(){
+    await sendPasswordResetEmail(auth,em)
+    .then(() =>{
+        alert("please check your email")
+    }).catch(function(e){
+        console.log(e);
+    })
+    console.log(em);
+  }
+
+  var em ='';
 const LoginForm = () => {
 
     
@@ -31,6 +43,7 @@ const LoginForm = () => {
 
     function submitEmail(event){
         setEmail(event.target.value);
+        em = event.target.value;
     }
 
     function submitPassword(event){
