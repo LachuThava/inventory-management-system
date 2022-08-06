@@ -27,8 +27,12 @@ function goToUserSettings(){
 }
 
 
-function handleLab(){
-  window.location.href='/Lab';
+function handleLab_1(){
+  window.location.href='/Lab_1';
+}
+
+function handleLab_2(){
+  window.location.href='/Lab_2';
 }
 
 function handleChat(){
@@ -44,11 +48,11 @@ function handleChat(){
                 <img className='h-36 w-42' src={user} alt="" />
                 <span className='fw-bold'>User</span>
             </div>
-            <div className='cursor-pointer justify-center items-center text-center mb-5  h-36 col-lg-4 w-auto ml-3 col-md-6 col-sm-12'>
+            <div onClick={handleLab_1} className='cursor-pointer justify-center items-center text-center mb-5  h-36 col-lg-4 w-auto ml-3 col-md-6 col-sm-12'>
                 <img className='h-36 w-42' src={lab_1} alt="" />
                 <span className='fw-bold'>LAB 01</span>
             </div>
-            <div onClick={handleLab} className=' cursor-pointer h-36 justify-center items-center text-center mb-5   col-lg-4 w-auto ml-3 col-md-6 col-sm-12'>
+            <div onClick={handleLab_2} className=' cursor-pointer h-36 justify-center items-center text-center mb-5   col-lg-4 w-auto ml-3 col-md-6 col-sm-12'>
                 <img className='h-36 w-42 ' src={lab_2} alt="" />
                 <span className='fw-bold'>LAB 02</span>
             </div>
