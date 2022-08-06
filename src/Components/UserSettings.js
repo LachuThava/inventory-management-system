@@ -1,8 +1,34 @@
-import React from 'react';
+import { collection, doc, getDoc, getDocs, onSnapshot, setDoc } from 'firebase/firestore';
+import {React,useState} from 'react';
 import { Button } from 'react-bootstrap';
 import chat from '../assets/chat.png';
+import { db } from '../firebase';
+import elect from'../json files/elect.json';
+import furn from '../json files/furniture.json';
 
 const UserSettings = () => {
+  
+  var elec_json = elect;
+  var furn_json = furn;
+  const tempList = [];
+  var[data,setData] = useState([]);
+  
+  
+  async function handleSubmit(){
+      // const colRef = await collection(db,'Users');
+      // const colSnap = await getDocs(colRef);
+      // const col_size = colSnap.size;
+      // console.log(col_size);
+      // console.log(colSnap.docs[1].data()['uid ']);
+
+      const docRef = await doc(db,"lab_test","Lab_01");
+      await setDoc(docRef,{
+        elec_json
+      });
+      console.log("uploaded");
+  }
+
+
   return (
     <div className='flex items-center justify-center h-screen '>
       <div className='border-l-sky-400 border-l-2 border-r-2 border-r-pink-500 flex p-2 rounded-md h-2/3 w-2/5'>
@@ -11,18 +37,18 @@ const UserSettings = () => {
           
           <div className=' flex mb-2 bg-zinc-100 border-l-4 p-1 rounded-md'>
             <span className='mr-7'>Email :</span>
-            <text>tlaksman932@gmail.com</text>
+            <span>tlaksman932@gmail.com</span>
           </div>
           <div className='flex mb-2 bg-zinc-100 border-l-4 p-1 rounded-md'>
             <span className='mr-7'>password :</span>
-            <text>tlaksman932@gmail.com</text>
+            <span>tlaksman932@gmail.com</span>
           </div>
           <div className='flex mb-2 bg-zinc-100 border-l-4 p-1 rounded-md'>
             <span className='mr-7'>position : </span>
-            <text>Student</text>
+            <span>Student</span>
           </div>
           <div className='ml-36'>
-            <Button className=''>Logout</Button>
+            <Button onClick={handleSubmit}  className=''>Logout</Button>
           </div>
       </div>
     </div>
