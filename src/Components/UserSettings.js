@@ -15,12 +15,6 @@ const UserSettings = () => {
   
   
   async function handleSubmit(){
-      // const colRef = await collection(db,'Users');
-      // const colSnap = await getDocs(colRef);
-      // const col_size = colSnap.size;
-      // console.log(col_size);
-      // console.log(colSnap.docs[1].data()['uid ']);
-
       const docRef = await doc(db,"lab_test","Lab_01");
       await setDoc(docRef,{
         elec_json
