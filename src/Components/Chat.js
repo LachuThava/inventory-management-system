@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from "react";
 
-const Chat = () => {
+function Chat() {
+
+  useEffect(() => {
+    window.location.href = "http://localhost:3001/";
+  }, []);
+
   return (
-    <div>Chat</div>
-  )
+    <div>
+      <h2>Loading...</h2>
+    </div>
+  );
 }
 
-export default Chat
+export default Chat;
