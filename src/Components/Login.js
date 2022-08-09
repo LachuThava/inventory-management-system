@@ -35,10 +35,10 @@ function goToSignup(){
               </div>
                 <LoginForm />
                 <div className='mt-2 ml-5 flex-col'>
-                <text className='h-9 ml-3 cursor-pointer text-lg text-black underline ' onClick={goToForgetPassword}>Forget Password</text>
+                <span className='h-9 ml-3 cursor-pointer text-lg text-black underline ' onClick={goToForgetPassword}>Forget Password</span>
                 
                 <span className=' mr-5'><br/>You don't have account....</span>
-                <text className='h-9 ml-3 cursor-pointer text-lg text-black underline ' onClick={goToSignup}>Sign up</text>
+                <span className='h-9 ml-3 cursor-pointer text-lg text-black underline ' onClick={goToSignup}>Sign up</span>
                 </div>
             </div>    
         </div>

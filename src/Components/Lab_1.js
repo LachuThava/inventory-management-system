@@ -16,6 +16,7 @@ import InsertForm from './InsertForm.js';
 const Lab_1 = () => {
     var[data,setData] = useState([]);
     var[idBoolean,setIdBoolean] = useState(false);
+    const lab_name = "Lab_01";
 
     const checkRoleId = async()=>{
         const uid  = await auth.currentUser?.uid;
@@ -42,10 +43,7 @@ const Lab_1 = () => {
 
     }
 
-     async function handleTagCheck(){
-        const docRef = await doc(db,"Lending",)
-    }
-
+  
     
 async function HandleRemove(props){
     console.log("props : ",props);
@@ -99,7 +97,7 @@ async function HandleRemove(props){
                     </div>}
             position='left bottom'
             >
-                {!props.tagbool && <PopupForm id={props.id} />}
+                {!props.tagbool && <PopupForm id={props.id} name={lab_name} />}
                {/* {props.tagbool && <RemoveForm id={props.id} />} */}
             </Popup>
         );

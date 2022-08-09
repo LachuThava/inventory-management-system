@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import user from '../assets/user.png';
 import lab_1 from '../assets/Lab1.png';
 import lab_2 from '../assets/Lab2.png';
 import chat from '../assets/chat.png';
 import logout from '../assets/logout.png';
-import menu_bg from '../assets/Menubg.jpg';
-import UserSettings from './UserSettings';
+
+import report from '../assets/report.png';
 import { getAuth, signOut } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase';
 const Menu = () => {
+
+// var [isBool,setIsBool] = useState(false);
+// const[temp,setTemp] = useState();
 
     function handleSignOut(e){
         const auth = getAuth();
@@ -39,6 +44,30 @@ function handleChat(){
   window.location.href='/chatting';
 }
 
+
+function handleReport(){
+  window.location.href='/report';
+}
+
+// async function FindPosition(){
+//     const uid = await auth.currentUser?.uid;
+//     console.log("uid",uid);
+//     const docRef = await doc(db,"Users",uid);
+//     const docSnap = await getDoc(docRef);
+//     setTemp(await docSnap.get('position'));
+//     console.log("temp",temp);
+//     console.log("temp!=='Student'",temp!=='Student');
+//     if(temp!=='Student'){
+//       setIsBool(true);
+//       console.log("isBool",isBool);
+//     }
+// }
+
+
+useEffect(()=>{
+  // FindPosition();
+},[]);
+
   return (
     <div className="h-screen  w-screen absolute">
         
@@ -60,6 +89,10 @@ function handleChat(){
                 <img className='h-36 w-42 ' src={chat} alt="" />
                 <span className='fw-bold'>Chat</span>
             </div>
+            {<div className=' cursor-pointer h-36 justify-center items-center text-center mb-5  col-lg-4 w-auto ml-3 col-md-6 col-sm-12'>
+                <img className='h-36 w-42' src={report} onClick={handleReport} alt="" />
+                <span className='fw-bold'>Report</span>
+            </div>}
             <div className=' cursor-pointer h-36 justify-center items-center text-center mb-5  col-lg-4 w-auto ml-3 col-md-6 col-sm-12'>
                 <img className='h-36 w-42' src={logout} onClick={handleSignOut} alt="" />
                 <span className='fw-bold'>Log Out</span>

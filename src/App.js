@@ -10,6 +10,8 @@ import UserSettings from "./Components/UserSettings";
 import Lab_1 from "./Components/Lab_1";
 import Lab_2 from "./Components/Lab_2";
 import Chat from "./Components/Chat";
+import Report from "./Components/Report";
+import { auth } from "./firebase";
 
 
 function App() {
@@ -19,11 +21,12 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
-          <Route path = '/menu' element={<Menu/>}  />
+          <Route path = '/menu' element={<Menu />}  />
           <Route path='/Settings' element={<UserSettings />} />
           <Route path='/Lab_1' element={<Lab_1 />} />
           <Route path='/Lab_2' element={<Lab_2 />} />
           <Route path="/chatting" element={<Chat />} />
+          <Route path="/report" element={<Report  />} />
           </Routes>
       </BrowserRouter>
     </div>
