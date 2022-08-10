@@ -16,6 +16,7 @@ import InsertForm from './InsertForm.js';
 const Lab_1 = () => {
     var[data,setData] = useState([]);
     var[idBoolean,setIdBoolean] = useState(false);
+    const lab_name = "Lab_01";
 
     const checkRoleId = async()=>{
         const uid  = await auth.currentUser?.uid;
@@ -42,10 +43,7 @@ const Lab_1 = () => {
 
     }
 
-     async function handleTagCheck(){
-        const docRef = await doc(db,"Lending",)
-    }
-
+  
     
 async function HandleRemove(props){
     console.log("props : ",props);
@@ -66,12 +64,16 @@ async function HandleRemove(props){
         await setDoc(docRef,{elec_json});
         console.log("update db");
 }
-   async function handleRemoveTag(props){
+  
+
+
+async function handleRemoveTag(props){
     // e.preventDefault();
         const docRef1 = await doc(db,"lab_test","Lab_01");
         const myDoc = await getDoc(docRef1);
         console.log(props.id);
-        
+        var email = ''; 
+            
 
         var elec_json = [];
         elec_json = myDoc.get("elec_json");
@@ -79,6 +81,7 @@ async function HandleRemove(props){
         elec_json.map((item,key)=>{
             if(props===key){
                 console.log("working");
+                email = item['student'];
                 item['student'] = "";
                 item['received_time'] = "";
                 item['assigned_boolean'] = false;
@@ -89,6 +92,19 @@ async function HandleRemove(props){
 
         // console.log("elec_json : ",elec_json);
         await setDoc(docRef1,{elec_json});
+
+        const docRef2 = await doc(db,"Lending",lab_name);
+        const docSnap2 = await getDoc(docRef2);
+        const temp_arr = docSnap2.get('temp_arr');
+        let newDate = new Date();
+        temp_arr.map((item)=>{
+            if(item['student']===email && item['asset_id']===props){
+                item['submitted_time']= newDate.getFullYear()+"/"+newDate.getMonth()+"/"+newDate.getDate()+"   "+newDate.getHours()+":"+newDate.getMinutes()+":"+newDate.getSeconds()
+            }
+        })
+        await setDoc(docRef2,{temp_arr});
+        console.log("submitted time update")
+
     }
 
     function HandleTag(props){
@@ -99,7 +115,7 @@ async function HandleRemove(props){
                     </div>}
             position='left bottom'
             >
-                {!props.tagbool && <PopupForm id={props.id} />}
+                {!props.tagbool && <PopupForm id={props.id} name={lab_name} />}
                {/* {props.tagbool && <RemoveForm id={props.id} />} */}
             </Popup>
         );
