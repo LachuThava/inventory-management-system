@@ -19,6 +19,7 @@ const UserSettings = () => {
 
 
   async function handleSubmit(){
+<<<<<<< HEAD
       // const docRef = await doc(db,"lab_test","Lab_02");
       // await setDoc(docRef,{
       //   furn_json
@@ -33,6 +34,13 @@ const UserSettings = () => {
         console.log(err.message);
       })
     
+=======
+      const docRef = await doc(db,"lab_test","Lab_02");
+      await setDoc(docRef,{
+        furn_json
+      });
+      console.log("uploaded");
+>>>>>>> d9492cd9b3f49e561c5587ab35a9c56a40aa206c
   }
 
   const ReceiveData =async() =>{

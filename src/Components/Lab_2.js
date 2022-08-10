@@ -73,16 +73,26 @@ async function HandleRemove(props){
     // e.preventDefault();
         const docRef1 = await doc(db,"lab_test","Lab_02");
         const myDoc = await getDoc(docRef1);
+<<<<<<< HEAD
         console.log(props.id);  
         
 
         var furn_json = [];
         var email = '';
+=======
+        console.log(props.id);
+        
+
+        var furn_json = [];
+>>>>>>> d9492cd9b3f49e561c5587ab35a9c56a40aa206c
         furn_json = myDoc.get("furn_json");
         console.log("furn_json",furn_json);
         furn_json.map((item,key)=>{
             if(props===key){
+<<<<<<< HEAD
                 email = item['student'];
+=======
+>>>>>>> d9492cd9b3f49e561c5587ab35a9c56a40aa206c
                 console.log("working");
                 item['student'] = "";
                 item['received_time'] = "";
@@ -94,6 +104,7 @@ async function HandleRemove(props){
 
         // console.log("furn_json : ",furn_json);
         await setDoc(docRef1,{furn_json});
+<<<<<<< HEAD
 
 
         const docRef2 = await doc(db,"Lending",lab_name);
@@ -109,6 +120,8 @@ async function HandleRemove(props){
         console.log("submitted time update")
 
 
+=======
+>>>>>>> d9492cd9b3f49e561c5587ab35a9c56a40aa206c
     }
 
     function HandleTag(props){
@@ -179,6 +192,7 @@ if(data.length===0){
               </div>
           </div>
           <div >
+<<<<<<< HEAD
                 { 
                     data.map((item,key) =>{
                         return( <div key={key} className='bg-stone-100 justify-between mb-2 mt-1  border-4 flex'>
@@ -197,6 +211,26 @@ if(data.length===0){
                         )
                     })  
                 }
+=======
+              { 
+                  data.map((item,key) =>{
+                      return( <div key={key} className='bg-stone-100 justify-between mb-2 mt-1  border-4 flex'>
+                          <div className='items-center justify-evenly flex m-auto w-8/12 h-24'>
+                              <span className='w-36 col-4 text-center  bg-red-400'>{key}</span>
+                              <span className='w-56 col-4 text-center bg-green-300'>{item.description}</span>
+                              <span className='w-36 col-4 text-center bg-blue-300'>{item.name}</span>
+                              <span className='w-36 col-4 text-center  bg-yellow-300'>{item.student}</span>
+                          </div>
+                        {!idBoolean &&  <div className='flex items-center  w-1/12 justify-center '>
+                              <RefreshIcon onChange={handleRepair} className='h-5 w-5 mr-2 cursor-pointer ' />
+                              <HandleTag id={key} tagbool={item.assigned_boolean} />
+                              <MinusCircleIcon onClick={() =>{HandleRemove(key)}} className='h-5 w-5 mr-2 cursor-pointer' />
+                          </div>}
+                      </div>
+                      )
+                  })  
+              }
+>>>>>>> d9492cd9b3f49e561c5587ab35a9c56a40aa206c
                </div>
           {<Request/>}    
       </div>
