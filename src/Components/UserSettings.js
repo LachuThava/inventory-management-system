@@ -15,9 +15,9 @@ const UserSettings = () => {
   
   
   async function handleSubmit(){
-      const docRef = await doc(db,"lab_test","Lab_01");
+      const docRef = await doc(db,"lab_test","Lab_02");
       await setDoc(docRef,{
-        elec_json
+        furn_json
       });
       console.log("uploaded");
   }

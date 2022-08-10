@@ -18,7 +18,7 @@ const PopupForm= (props)=> {
     async function handleAssign(e){
         e.preventDefault();
         // isTagged=true;
-        const docRef = await doc(db,'Lending',"Lab_01");
+        const docRef = await doc(db,'Lending',props.name);
         const docSnap = getDoc(docRef);
         // console.log((await docSnap).get('temp_arr'));
         var temp_arr = [];
@@ -29,7 +29,8 @@ const PopupForm= (props)=> {
             "approved_by" : auth.currentUser?.email,
             "asset_id": props.id,   
             "student":email,
-            "assigned_time": newDate.getFullYear()+"/"+newDate.getMonth()+"/"+newDate.getDate()+"   "+newDate.getHours()+":"+newDate.getMinutes()+":"+newDate.getSeconds()
+            "assigned_time": newDate.getFullYear()+"/"+newDate.getMonth()+"/"+newDate.getDate()+"   "+newDate.getHours()+":"+newDate.getMinutes()+":"+newDate.getSeconds(),
+            "submitted_time":''
         }
         console.log(temp_map);  
         temp_arr.push(temp_map);
@@ -39,28 +40,52 @@ const PopupForm= (props)=> {
         )
         // console.log(temp_arr);
 
-        const docRef1 = await doc(db,"lab_test","Lab_01");
+        const docRef1 = await doc(db,"lab_test",props.name);
         const myDoc = await getDoc(docRef1);
         
 
         var elec_json = [];
-        elec_json = myDoc.get("elec_json");
-        console.log("elec_json",elec_json);
-        elec_json.map((item,key)=>{
-            if(props.id===key){
-                console.log("working");
-                item['student'] = email;
-                item['received_time'] = newDate.getTime();
-                item['assigned_boolean'] = true;
+        var furn_json = [];
+        if(props.name==='Lab_01'){
+                elec_json = myDoc.get("elec_json");
+                console.log("elec_json",elec_json);
+            elec_json.map((item,key)=>{
+                if(props.id===key){
+                    console.log("working");
+                    item['student'] = email;
+                    item['received_time'] = newDate.getTime();
+                    item['assigned_boolean'] = true;
+                    // return {...item,student: email};  
+                }
+            })
+            console.log("after update : ",elec_json);
+
+
+            // console.log("elec_json : ",elec_json);
+            await setDoc(docRef1,{elec_json});
+            console.log("function is working");
+        }
+        else
+        {
+            furn_json = myDoc.get("furn_json");
+            console.log("furn_json",furn_json);
+            furn_json.map((item,key)=>{
+                if(props.id===key){
+                    console.log("working");
+                    item['student'] = email;
+                    item['received_time'] = newDate.getTime();
+                    item['assigned_boolean'] = true;
                 // return {...item,student: email};  
             }
         })
-        console.log("after update : ",elec_json);
+        console.log("after update furn_json : ",furn_json);
 
 
         // console.log("elec_json : ",elec_json);
-        await setDoc(docRef1,{elec_json});
+        await setDoc(docRef1,{furn_json});
         console.log("function is working");
+        }
+        
     }
 
   return (
